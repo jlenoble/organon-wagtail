@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block hero %}
+    <div class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+        <header class="max-w-6xl mx-auto py-24 text-white text-center">
+            <h1 class="text-5xl">{{ page.title }}</h1>
+        </header>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="divide-y divide-solid">
+        {% for task in tasks %}
+            <section class="py-12">
+                <a href="{{ task.url }}" class="text-3xl">
+                    {{ task.title }}
+                </a>
+            </section>
+        {% endfor %}
+    </div>
+{% endblock content %}
