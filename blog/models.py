@@ -23,7 +23,7 @@ class BlogPostPage(Page):
                 ),
             ),
             ("richtext", blocks.RichTextBlock()),
-            ("image", ImageChooserBlock()),
+            ("image", ImageChooserBlock(template="blocks/image_block.html")),
         ],
         use_json_field=True,
         blank=True,
