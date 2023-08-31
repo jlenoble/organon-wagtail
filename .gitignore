@@ -1,6 +1,7 @@
 private/
 media/
 node_modules/
+organon_wagtail/static/css/organon_wagtail.css
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
