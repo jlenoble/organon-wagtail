@@ -1,8 +1,11 @@
-from wagtail.models import Page
+from django.db import models
+from modelcluster.fields import ParentalKey
+
+from wagtail.models import Page, Orderable
 from wagtail import blocks
 from wagtail.fields import StreamField
 
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
 
 
 class TaskIndexPage(Page):
@@ -33,4 +36,20 @@ class TaskDetailPage(Page):
         null=True,
     )
 
-    content_panels = Page.content_panels + [FieldPanel("body")]
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+        InlinePanel("subtasks", label="Subtasks"),
+    ]
+
+
+class Subtasks(Orderable):
+    page = ParentalKey("tasks.TaskDetailPage", related_name="subtasks")
+    subtask = models.ForeignKey(
+        "tasks.TaskDetailPage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels = [FieldPanel("subtask")]
