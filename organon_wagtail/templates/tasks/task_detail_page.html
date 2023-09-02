@@ -23,4 +23,15 @@
             </section>
         {% endfor %}
     </div>
+
+    <h2>Prerequisites</h2>
+    <div class="divide-y divide-solid">
+        {% for prerequisite in page.prerequisites.all %}
+            <section class="py-12">
+                <a href="{{ prerequisite.task.url }}" class="text-3xl">
+                    {{ prerequisite.task.title }}
+                </a>
+            </section>
+        {% endfor %}
+    </div>
 {% endblock content %}

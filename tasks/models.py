@@ -53,3 +53,16 @@ class Subtasks(Orderable):
     )
 
     panels = [FieldPanel("task")]
+
+
+class Prerequisites(Orderable):
+    page = ParentalKey("tasks.TaskDetailPage", related_name="prerequisites")
+    task = models.ForeignKey(
+        "tasks.TaskDetailPage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+
+    panels = [FieldPanel("task")]
