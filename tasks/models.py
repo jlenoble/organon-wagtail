@@ -44,7 +44,7 @@ class TaskDetailPage(Page):
 
 class Subtasks(Orderable):
     page = ParentalKey("tasks.TaskDetailPage", related_name="subtasks")
-    subtask = models.ForeignKey(
+    task = models.ForeignKey(
         "tasks.TaskDetailPage",
         null=True,
         blank=True,
@@ -52,4 +52,4 @@ class Subtasks(Orderable):
         related_name="+",
     )
 
-    panels = [FieldPanel("subtask")]
+    panels = [FieldPanel("task")]

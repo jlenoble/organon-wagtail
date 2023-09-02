@@ -17,8 +17,8 @@
     <div class="divide-y divide-solid">
         {% for subtask in page.subtasks.all %}
             <section class="py-12">
-                <a href="{{ subtask.subtask.url }}" class="text-3xl">
-                    {{ subtask.subtask.title }}
+                <a href="{{ subtask.task.url }}" class="text-3xl">
+                    {{ subtask.task.title }}
                 </a>
             </section>
         {% endfor %}
